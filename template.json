@@ -1,27 +1,11 @@
 {
-  "AWSTemplateFormatVersion" : "2010-09-09",
-  "Description" : "A sample template",
-  "Resources" : {
-    "MyEC2Instance" : {
-      "Type" : "AWS::EC2::Instance",
-      "Properties" : {
-        "ImageId" : "ami-0ff8a91507f77f867",
-        "InstanceType" : "t2.micro",
-        "DisableApiTermination" : "false",
-        "BlockDeviceMappings" : [
-          {
-            "DeviceName" : "/dev/sdm",
-            "Ebs" : {
-              "VolumeType" : "io1",
-              "Iops" : 200,
-              "DeleteOnTermination" : true,
-              "VolumeSize" : 20,
-              "Encrypted":false,
+    "Resources": {
+        "S3Bucket": {
+            "Type": "AWS::S3::Bucket",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+                "BucketName": "iac-s3-test-bucket"
             }
-          }
-          
-        ]
-      }
+        }
     }
-  }
 }
